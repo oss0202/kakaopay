@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.oss.kakaopay.barofn.vo.AcnutInfoVO;
+import com.oss.kakaopay.barofn.vo.AcctInfoVO;
 
 /**
  *
@@ -22,8 +22,8 @@ import com.oss.kakaopay.barofn.vo.AcnutInfoVO;
 @Repository
 public class DelngDtlsDAO {
 
-	public List<AcnutInfoVO> selectTotAmtMaxCtr(){
-		List<AcnutInfoVO> lst = new ArrayList<AcnutInfoVO>();
+	public List<AcctInfoVO> selectTotAmtMaxCtr(){
+		List<AcctInfoVO> lst = new ArrayList<AcctInfoVO>();
 		return lst;
 	}
 }

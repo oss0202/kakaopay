@@ -34,8 +34,36 @@ public class DelngDtlsServiceImpl implements DelngDtlsService{
 	@Override
 	public AcctInfoVO selectTotAmtMaxCtr() {
 		System.out.println("service selectTotAmtMaxCtr");
-		//연도별 합계 금액 추출
+		/*
+		 * 1. 계정별 연도별 합계 금액 추출
+		 */
 		
+		/*
+		 * AcctInfoVO에서 계좌번호 조회
+		 */
+		
+		/*
+		 * DeDtlsVO에서 계좌번호 조회(거래일자 0~4 년도만 추출)
+		 */
+		
+		/*
+		 * 2. 연도별 가장 높은 금액 조회
+		 */
+		/*
+		int[] mNumber = new int[]{1,2,3,4,7,9,5,3,2};
+        
+        int max = mNumber[0];
+         
+        for(int i=1 ; i<mNumber.length ; i++){
+            if(mNumber[i] >= max){
+                max = mNumber[i];
+            }
+        }
+		 */
+
+		/*
+		 * 
+		 */
 		//제일 높은 금액 추출
 		return null;
 	}

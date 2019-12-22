@@ -53,10 +53,12 @@ public class csvReaderTest01 {
 	static List<BeanSample> beans;
 	static BeanSample bean;
 	static int index;
-	/*
+	
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		try {
-			List<BeanSample> resultlst = readAllExample("데이터_거래내역");
+//			System.out.println(readAllExample());
+			List<BeanSample> resultlst = readAllExample();
 			for (BeanSample beanSample : resultlst) {
 				System.out.println(beanSample.toString());
 			}
@@ -64,8 +66,9 @@ public class csvReaderTest01 {
 			e.printStackTrace();
 		}
 	}
-	*/
+	
 	public static List<BeanSample> readAll(Reader reader) throws Exception {
+		//CSVReader csvReader = new CSVReader(reader);
 		CSVParser parser = new CSVParserBuilder()
 			    .withSeparator(',')
 			    .withIgnoreQuotations(true)
@@ -85,6 +88,7 @@ public class csvReaderTest01 {
 		index = 0;
 		for (String[] strings : list) {
 		bean = new BeanSample();
+//			System.out.println(strings);
 			System.out.print(
 					strings[0] + ", " +
 					strings[1] + ", " +
@@ -101,11 +105,16 @@ public class csvReaderTest01 {
 			System.out.println(beans.toString());
 			index++;
 		}
+		//System.out.println(list.size());
 		return beans;
+//		return list;
 	}
 
-	public static List<BeanSample> readAllExample(String fileName) throws Exception {
-		Reader reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("static/" + fileName + ".csv").toURI()));
+//	public static String readAllExample() throws Exception {
+	public static List<BeanSample> readAllExample() throws Exception {
+		Reader reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("static/데이터_거래내역.csv").toURI()));
 		return readAll(reader);
+//		return readAll(reader).toString();
+		/* return CsvReaderExamples.readAll(reader).toString(); */
 	}
 }
