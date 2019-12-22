@@ -16,13 +16,13 @@ import java.util.List;
  * 2019.12.22	오성식			최초생성
  * 
  */ 
-public class ManagepntInfoVO {
+public class BrInfoVO {
 	
 	private String brCode;	//관리점코드
 	private String brName;	//관리점명
 	private String sumAmt;//총금액
 	private String year;		//년도
-	private List<ManagepntInfoVO> dataList;
+	private List<BrInfoVO> dataList;
 	
 	public String getBrCode() {
 		return brCode;
@@ -48,10 +48,10 @@ public class ManagepntInfoVO {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	public List<ManagepntInfoVO> getDataList() {
+	public List<BrInfoVO> getDataList() {
 		return dataList;
 	}
-	public void setDataList(List<ManagepntInfoVO> dataList) {
+	public void setDataList(List<BrInfoVO> dataList) {
 		this.dataList = dataList;
 	}
 	@Override

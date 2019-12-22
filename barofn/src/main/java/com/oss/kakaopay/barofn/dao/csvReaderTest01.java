@@ -46,22 +46,17 @@ class BeanSample {
 	public String toString() {
 		return "BeanSample [first=" + first + ", second=" + second + ", third=" + third + ", fourth=" + fourth + "]";
 	}
-    
-    
 }
-
 
 public class csvReaderTest01 {
 	
 	static List<BeanSample> beans;
 	static BeanSample bean;
 	static int index;
-	/*
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
-//			System.out.println(readAllExample());
-			List<BeanSample> resultlst = readAllExample();
+			List<BeanSample> resultlst = readAllExample("데이터_거래내역");
 			for (BeanSample beanSample : resultlst) {
 				System.out.println(beanSample.toString());
 			}
@@ -69,17 +64,8 @@ public class csvReaderTest01 {
 			e.printStackTrace();
 		}
 	}
-*/
-	public String oneByOneExample() throws Exception {
-	    Reader reader = Files.newBufferedReader(Paths.get(
-	      ClassLoader.getSystemResource("csv/twoColumn.csv").toURI()));
-	    return oneByOne(reader).toString();
-		/* return CsvReaderExamples.oneByOne(reader).toString(); */
-	}
-	
 	
 	public static List<BeanSample> readAll(Reader reader) throws Exception {
-		//CSVReader csvReader = new CSVReader(reader);
 		CSVParser parser = new CSVParserBuilder()
 			    .withSeparator(',')
 			    .withIgnoreQuotations(true)
@@ -99,7 +85,6 @@ public class csvReaderTest01 {
 		index = 0;
 		for (String[] strings : list) {
 		bean = new BeanSample();
-//			System.out.println(strings);
 			System.out.print(
 					strings[0] + ", " +
 					strings[1] + ", " +
@@ -116,41 +101,11 @@ public class csvReaderTest01 {
 			System.out.println(beans.toString());
 			index++;
 		}
-		//System.out.println(list.size());
 		return beans;
-//		return list;
 	}
 
-//	public static String readAllExample() throws Exception {
-	public static List<BeanSample> readAllExample() throws Exception {
-		Reader reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("static/데이터_거래내역.csv").toURI()));
+	public static List<BeanSample> readAllExample(String fileName) throws Exception {
+		Reader reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("static/" + fileName + ".csv").toURI()));
 		return readAll(reader);
-//		return readAll(reader).toString();
-		/* return CsvReaderExamples.readAll(reader).toString(); */
-	}
-
-	public List<String[]> oneByOne(Reader reader) throws Exception {
-		List<String[]> list = new ArrayList<>();
-		//CSVReader csvReader = new CSVReader(reader);
-
-		CSVParser parser = new CSVParserBuilder()
-			    .withSeparator(',')
-			    .withIgnoreQuotations(true)
-			    .build();
-		 
-		CSVReader csvReader = new CSVReaderBuilder(reader)
-		    .withSkipLines(1)
-		    .withCSVParser(parser)	
-		    .build();
-		
-		
-		String[] line;
-		while ((line = csvReader.readNext()) != null) {
-			list.add(line);
-		}
-		reader.close();
-		csvReader.close();
-		System.out.println(list.size());
-		return list;
 	}
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.oss.kakaopay.barofn.service.DelngDtlsService;
-import com.oss.kakaopay.barofn.vo.AcnutInfoVO;
-import com.oss.kakaopay.barofn.vo.ManagepntInfoVO;
+import com.oss.kakaopay.barofn.vo.AcctInfoVO;
+import com.oss.kakaopay.barofn.vo.BrInfoVO;
 
 /**
  *
@@ -32,8 +32,11 @@ public class DelngDtlsServiceImpl implements DelngDtlsService{
 		 * @return
 		 */
 	@Override
-	public AcnutInfoVO selectTotAmtMaxCtr() {
+	public AcctInfoVO selectTotAmtMaxCtr() {
 		System.out.println("service selectTotAmtMaxCtr");
+		//연도별 합계 금액 추출
+		
+		//제일 높은 금액 추출
 		return null;
 	}
 
@@ -46,7 +49,7 @@ public class DelngDtlsServiceImpl implements DelngDtlsService{
 	 * @return
 	 */
 	@Override
-	public AcnutInfoVO selectDeStr() {
+	public AcctInfoVO selectDeStr() {
 		System.out.println("service selectDeStr");
 		return null;
 	}
@@ -60,7 +63,7 @@ public class DelngDtlsServiceImpl implements DelngDtlsService{
 		 * @return
 		 */
 	@Override
-	public List<ManagepntInfoVO> selectYearBhfDelngTotamt() {
+	public List<BrInfoVO> selectYearBhfDelngTotamt() {
 		System.out.println("service selectYearBhfDelngTotamt");
 		return null;
 	}
@@ -74,7 +77,7 @@ public class DelngDtlsServiceImpl implements DelngDtlsService{
 		 * @return
 		 */
 	@Override
-	public ManagepntInfoVO selectBrDeTotAmt(String brName) {
+	public BrInfoVO selectBrDeTotAmt(String brName) {
 		System.out.println("파라미터 : " + brName);
 		System.out.println("service selectBrDeTotAmt");
 		return null;

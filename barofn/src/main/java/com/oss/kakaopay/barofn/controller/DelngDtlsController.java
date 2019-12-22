@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oss.kakaopay.barofn.service.impl.DelngDtlsServiceImpl;
-import com.oss.kakaopay.barofn.vo.AcnutInfoVO;
-import com.oss.kakaopay.barofn.vo.ManagepntInfoVO;
+import com.oss.kakaopay.barofn.vo.AcctInfoVO;
+import com.oss.kakaopay.barofn.vo.BrInfoVO;
 
 /**
  * [설명]
@@ -84,29 +84,30 @@ public class DelngDtlsController {
 	 * 해당지점 거래금액 합계 조회
 	 *
 	 * @param 관리점명(brName)
-	 * @return ManagepntInfoVO
+	 * @return BrInfoVO
 	 * @throws Exception
 	 * @return
 	 */
 	@RequestMapping(value = "4", produces = "application/json")
-	public ManagepntInfoVO selectBrDeTotAmt(@RequestParam(value = "brName") String  brName) {
+	public BrInfoVO selectBrDeTotAmt(@RequestParam(value = "brName") String  brName) {
 		// TODO Auto-generated method stub
 		if(brName.equals("분당점")||brName=="분당점") {
 			System.out.println("분당점이누");
 		}
 		delngDtlsServiceImpl.selectBrDeTotAmt(brName);
 		System.out.println("selectBrDeTotAmt()호출");
-		ManagepntInfoVO vo = new ManagepntInfoVO();
+		BrInfoVO vo = new BrInfoVO();
 		vo.setBrName(brName);
-		List<ManagepntInfoVO> lst = new ArrayList<ManagepntInfoVO>();
+		List<BrInfoVO> lst = new ArrayList<BrInfoVO>();
 		
-		ManagepntInfoVO vo2 = new ManagepntInfoVO();
-		ManagepntInfoVO vo3 = new ManagepntInfoVO();
+		BrInfoVO vo2 = new BrInfoVO();
+		BrInfoVO vo3 = new BrInfoVO();
 		vo2.setBrName(brName+0);
 		lst.add(0, vo2);
 		vo3.setBrName(brName+1);
 		lst.add(1, vo3);
 		vo.setDataList(lst);
+		System.out.println(vo);
 		return vo;
 	}
 

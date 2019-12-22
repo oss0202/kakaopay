@@ -14,7 +14,7 @@ package com.oss.kakaopay.barofn.vo;
  * 2019.12.22	오성식			최초생성
  * 
  */ 
-public class DelngDtlsVO {
+public class DeDtlsVO {
 
 	private String deDm;	//거래일자
 	private String acctNo; //계좌번호

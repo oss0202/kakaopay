@@ -14,7 +14,7 @@ package com.oss.kakaopay.barofn.vo;
  * 2019.12.22	오성식			최초생성
  * 
  */ 
-public class AcnutInfoVO {
+public class AcctInfoVO {
 /*ACNUT_NO	ACNUT_NM	MANAGEPNT_CODE sumAmt year
  * 계좌번호	계좌명	관리점코드 
 */

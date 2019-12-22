@@ -2,8 +2,8 @@ package com.oss.kakaopay.barofn.service;
 
 import java.util.List;
 
-import com.oss.kakaopay.barofn.vo.AcnutInfoVO;
-import com.oss.kakaopay.barofn.vo.ManagepntInfoVO;
+import com.oss.kakaopay.barofn.vo.AcctInfoVO;
+import com.oss.kakaopay.barofn.vo.BrInfoVO;
 
 /**
  *
@@ -57,7 +57,7 @@ public interface DelngDtlsService{
 	 * @throws Exception
 	 * @return
 	 */
-	public AcnutInfoVO selectTotAmtMaxCtr();
+	public AcctInfoVO selectTotAmtMaxCtr();
 	
 	 /**
 	 * 각 연도별 거래가 없는 고객 조회
@@ -67,7 +67,7 @@ public interface DelngDtlsService{
 	 * @throws Exception
 	 * @return
 	 */
-	public AcnutInfoVO selectDeStr();
+	public AcctInfoVO selectDeStr();
 	
 	 /**
 	 * 연도별 관리점별 거래금액 합계를 구하고 합계금액별로 내립차순 조회
@@ -77,7 +77,7 @@ public interface DelngDtlsService{
 	 * @throws Exception
 	 * @return
 	 */
-	public List<ManagepntInfoVO> selectYearBhfDelngTotamt();
+	public List<BrInfoVO> selectYearBhfDelngTotamt();
 	
 	 /**
 	 * 해당지점 거래금액 합계 조회
@@ -87,5 +87,5 @@ public interface DelngDtlsService{
 	 * @throws Exception
 	 * @return
 	 */
-	public ManagepntInfoVO selectBrDeTotAmt(String brName);
+	public BrInfoVO selectBrDeTotAmt(String brName);
 }
