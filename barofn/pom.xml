@@ -63,10 +63,10 @@
 		</dependency>
 
 		<!-- 임시 JDBC -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>

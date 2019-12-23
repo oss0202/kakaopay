@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="CsvToH2">
+	<resultMap type="BrInfoVO" id="BrInfoMap">
+		<result property="brCode" column="BR_CODE" />
+		<result property="brName" column="BR_NAME" />
+	</resultMap>
+	<update id="createSample"></update>
+	
+	<insert id="insertSample" parameterType="BrInfoVO" >
+ 		insert into TB_BRINFO 
+ 		values (#{brCode}, #{brName})
+ 	</insert>
+ 	
+ 	<select id="selectSample" parameterType="BrInfoVO" resultMap="BrInfoMap">
+ 		SELECT * FROM TB_BRINFO WHERE BR_CODE = #{brCode}
+ 	</select>
+ 	
+ 	<select id="groupSample" resultType="Map">
+ 		SELECT * FROM TB_BRINFO
+ 	</select>
+</mapper>

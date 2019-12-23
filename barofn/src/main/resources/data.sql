@@ -1,0 +1,2 @@
+INSERT INTO TB_BRINFO VALUES
+('F',	'요호호호');
