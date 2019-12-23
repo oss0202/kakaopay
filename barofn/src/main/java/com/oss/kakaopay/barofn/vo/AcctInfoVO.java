@@ -21,9 +21,7 @@ public class AcctInfoVO {
 	private String acctNo;	//계좌번호
 	private String acctNm;	//계좌명
 	private String brCode;	//관리점코드
-	private String sumAmt;//총금액
-	private String year;		//년도
-	
+
 	public String getAcctNo() {
 		return acctNo;
 	}
@@ -42,22 +40,9 @@ public class AcctInfoVO {
 	public void setBrCode(String brCode) {
 		this.brCode = brCode;
 	}
-	public String getSumAmt() {
-		return sumAmt;
-	}
-	public void setSumAmt(String sumAmt) {
-		this.sumAmt = sumAmt;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
 	@Override
 	public String toString() {
-		return "AcnutInfoVO [acctNo=" + acctNo + ", acctNm=" + acctNm + ", brCode=" + brCode + ", sumAmt=" + sumAmt
-				+ ", year=" + year + "]";
+		return "AcctInfoVO [acctNo=" + acctNo + ", acctNm=" + acctNm + ", brCode=" + brCode + "]";
 	}
 	
 }

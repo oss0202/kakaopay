@@ -106,7 +106,6 @@ public class DelngDtlsController {
 		lst.add(0, vo2);
 		vo3.setBrName(brName+1);
 		lst.add(1, vo3);
-		vo.setDataList(lst);
 		System.out.println(vo);
 		return vo;
 	}

@@ -22,6 +22,7 @@ public class DeDtlsVO {
 	private String amt;		//금액
 	private String fee;		//수수료
 	private String canAt;	//취소여부
+	
 	public String getDeDm() {
 		return deDm;
 	}

@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS TB_ACCTINFO;
 
 CREATE TABLE TB_ACCTINFO(	
 ACCT_NO varchar(100)	,
-BR_NAME varchar(25)	,
+ACCT_NM varchar(25)	,
 BR_CODE varchar(25)	
 );	
 

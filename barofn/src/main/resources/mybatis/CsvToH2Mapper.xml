@@ -14,11 +14,15 @@
  		values (#{brCode}, #{brName})
  	</insert>
  	
+ 	<select id="selectSampleAll" resultMap="BrInfoMap">
+ 		SELECT * FROM TB_BRINFO
+ 	</select>
+ 	
  	<select id="selectSample" parameterType="BrInfoVO" resultMap="BrInfoMap">
  		SELECT * FROM TB_BRINFO WHERE BR_CODE = #{brCode}
  	</select>
  	
  	<select id="groupSample" resultType="Map">
- 		SELECT * FROM TB_BRINFO
+ 		SELECT BR_CODE,  BR_NAME, 11 FROM TB_BRINFO
  	</select>
 </mapper>

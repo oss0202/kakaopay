@@ -65,6 +65,7 @@ public class csvReaderTest01 {
 		}
 	}
 	*/
+	
 	public static List<BeanSample> readAll(Reader reader) throws Exception {
 		CSVParser parser = new CSVParserBuilder()
 			    .withSeparator(',')
