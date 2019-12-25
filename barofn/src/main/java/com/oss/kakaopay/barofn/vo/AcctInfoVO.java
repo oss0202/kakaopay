@@ -1,5 +1,7 @@
 package com.oss.kakaopay.barofn.vo;
 
+import java.util.List;
+
 /**
  * 계좌정보VO
  *
@@ -21,6 +23,10 @@ public class AcctInfoVO {
 	private String acctNo;	//계좌번호
 	private String acctNm;	//계좌명
 	private String brCode;	//관리점코드
+	private String brNm;	//관리점이름
+	private String year;	//년도
+	private String sumAmt;	//금액합산
+	private List<String> yearLst;	//년도
 
 	public String getAcctNo() {
 		return acctNo;
@@ -40,9 +46,34 @@ public class AcctInfoVO {
 	public void setBrCode(String brCode) {
 		this.brCode = brCode;
 	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getSumAmt() {
+		return sumAmt;
+	}
+	public void setSumAmt(String sumAmt) {
+		this.sumAmt = sumAmt;
+	}
+	public List<String> getYearLst() {
+		return yearLst;
+	}
+	public void setYearLst(List<String> yearLst) {
+		this.yearLst = yearLst;
+	}
+	public String getBrNm() {
+		return brNm;
+	}
+	public void setBrNm(String brNm) {
+		this.brNm = brNm;
+	}
 	@Override
 	public String toString() {
-		return "AcctInfoVO [acctNo=" + acctNo + ", acctNm=" + acctNm + ", brCode=" + brCode + "]";
+		return "AcctInfoVO [acctNo=" + acctNo + ", acctNm=" + acctNm + ", brCode=" + brCode + ", brNm=" + brNm
+				+ ", year=" + year + ", sumAmt=" + sumAmt + ", yearLst=" + yearLst + "]";
 	}
 	
 }

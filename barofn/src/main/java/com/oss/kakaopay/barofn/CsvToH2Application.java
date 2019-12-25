@@ -14,9 +14,7 @@ public class CsvToH2Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("------------------CSV to H2------------------");
-		csvToH2ServiceImpl.insertBrInfo(null);
-		csvToH2ServiceImpl.insertAccInfo(null);
-		csvToH2ServiceImpl.insertDeDtls(null);
+		csvToH2ServiceImpl.insertCsvtoH2();
 	}
 
 }

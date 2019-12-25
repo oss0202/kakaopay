@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Barofn">
+	<resultMap type="BrInfoVO" id="BrInfoMap">
+		<result property="brCode" column="BR_CODE" />
+		<result property="brNm" column="BR_NM" />
+		<result property="year" column="YEAR" />
+		<result property="sumAmt" column="SUM_AMT" />
+	</resultMap>
+	
+	<resultMap type="AcctInfoVO" id="AcctInfoMap">
+		<result property="year" column="YEAR" />
+		<result property="acctNm" column="ACCT_NM" />
+		<result property="acctNo" column="ACCT_NO" />
+		<result property="brCode" column="BR_CODE" />
+		<result property="brNm" column="BR_NM" />
+		<result property="sumAmt" column="SUM_AMT" />
+	</resultMap>
+	
+	<resultMap type="DeDtlsVO" id="DeDtlsMap">
+		<result property="deDm" column="DE_DM" />
+		<result property="acctNo" column="ACCT_NO" />
+		<result property="deNo" column="DE_NO" />
+		<result property="amt" column="AMT" />
+		<result property="fee" column="FEE" />
+		<result property="canAt" column="CAN_AT" />
+	</resultMap>
+
+ 	<select id="selectTotAmtMaxCtr" resultMap="AcctInfoMap">
+ 		SELECT
+			YEAR,
+			ACCT_NO ,
+			ACCT_NM ,
+			SUM_AMT
+		FROM
+			(
+				SELECT
+				YEAR,
+				ACCT_NO , 
+				ACCT_NM ,
+				SUM_AMT ,
+				ROW_NUMBER() OVER(PARTITION BY YEAR ORDER BY SUM_AMT DESC) AS SUM_AMT_NUM_DESC
+		
+				FROM
+					(
+					SELECT
+						YEAR,
+						ACCT_NO , 
+						ACCT_NM ,
+						SUM(AMT-FEE ) SUM_AMT,
+					FROM(
+						SELECT 
+							LEFT(DE_DM ,4) AS YEAR,
+							TD.ACCT_NO ,
+							TA.ACCT_NM ,
+							TD.DE_NO ,
+							TD.AMT ,
+							TD.FEE ,
+							TD.CAN_AT 
+						FROM 
+							TB_DEDTLS TD 
+							LEFT JOIN TB_ACCTINFO TA 
+								ON TD.ACCT_NO  = TA.ACCT_NO 
+						WHERE
+							TD.CAN_AT = 'N'
+					)
+					GROUP BY
+					  YEAR, ACCT_NO , ACCT_NM
+				)
+			)
+		WHERE SUM_AMT_NUM_DESC = 1
+		ORDER BY YEAR DESC
+ 	</select>
+ 	
+ 	<select id="selectYearDeUser" resultMap="AcctInfoMap">
+		SELECT
+			DISTINCT
+			LEFT(DE_DM ,4) AS YEAR,
+			TA.ACCT_NO 
+		FROM
+			TB_DEDTLS TD 
+			LEFT JOIN TB_ACCTINFO TA 
+				ON TA.ACCT_NO = TD.ACCT_NO 
+		WHERE
+			CAN_AT = 'N'
+		ORDER BY LEFT(DE_DM ,4) DESC , TA.ACCT_NO 
+ 	</select>
+ 	
+ 	<select id="selectYearNotDeUser" parameterType="java.util.List" resultMap="AcctInfoMap">
+		SELECT
+			ACCT_NO, 
+			ACCT_NM, 
+			BR_CODE 
+		FROM
+			TB_ACCTINFO TA
+		WHERE
+			ACCT_NO NOT IN 
+			<foreach item="item" index="index" collection="list" open="(" close=")" separator="," >
+				 #{item}
+			</foreach>
+		ORDER BY ACCT_NO
+ 	</select>
+ 	
+ 	
+ 	<select id="selectYearBhfDelngTotamt" resultMap="AcctInfoMap">
+		SELECT
+			YEAR, 
+			TB.BR_NM, 
+			TB.BR_CODE, 
+			SUM(AMT-FEE) AS SUM_AMT
+		FROM
+			(
+				SELECT
+					LEFT(DE_DM ,4) AS YEAR,
+					TD.ACCT_NO,
+					TD.AMT,
+					TD.FEE,
+					TA.BR_CODE 
+				FROM
+					TB_DEDTLS TD 
+					LEFT JOIN TB_ACCTINFO TA 
+						ON TD.ACCT_NO = TA.ACCT_NO 
+				WHERE 
+					TD.CAN_AT='N'
+			) TDTA
+			LEFT JOIN TB_BRINFO TB 
+				ON TDTA.BR_CODE = TB.BR_CODE
+		GROUP BY
+		YEAR, TB.BR_NM , TB.BR_CODE 
+                ORDER BY YEAR DESC, SUM_AMT DESC
+ 	</select>
+ 	
+ 	<select id="selectBrDeTotAmt" parameterType="AcctInfoVO" resultMap="AcctInfoMap">
+		
+		SELECT
+			TB.BR_NM, 
+			TB.BR_CODE, 
+			SUM(AMT-FEE) AS SUM_AMT
+		FROM
+			(
+				SELECT
+					TD.ACCT_NO,
+					TD.AMT,
+					TD.FEE,
+					TA.BR_CODE 
+				FROM
+					TB_DEDTLS TD 
+					LEFT JOIN TB_ACCTINFO TA 
+						ON TD.ACCT_NO = TA.ACCT_NO 
+				WHERE 
+					TD.CAN_AT='N'
+			) TDTA
+			LEFT JOIN TB_BRINFO TB 
+				ON TDTA.BR_CODE = TB.BR_CODE
+		
+		WHERE TB.BR_NM =#{acctNm}
+		
+		GROUP BY
+		TB.BR_NM , TB.BR_CODE 
+
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	<!-- TB_ACCTINFO select -->
+ 	<select id="selectTbAcctinfo" resultMap="AcctInfoMap">
+ 		SELECT * FROM TB_ACCTINFO
+ 	</select>
+ 	
+ 	<!-- TB_DEDTLS select -->
+ 	<select id="selectTbDedtls" resultMap="DeDtlsMap">
+ 		SELECT * FROM TB_DEDTLS
+ 	</select>
+ 	
+</mapper>

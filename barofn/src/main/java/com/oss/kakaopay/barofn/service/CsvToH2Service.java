@@ -18,34 +18,12 @@ import com.oss.kakaopay.barofn.vo.DeDtlsVO;
 */
 public interface CsvToH2Service {
 
-	/*TB_BR_INFO	BrInfoVO
-	 * TB_ACCT_INFO	AcctInfoVO
-	 * TB_DE_DTLS	DeDtlsVO
-	 */
 	/**
-	 * TB_BR_INFO insert
-	 *
+	 * 폴더에 있는 CSV파일 H2에 Insert
 	 * @param BrInfoVO
 	 * @throws Exception
 	 * @return
 	 */
-	public void insertBrInfo(BrInfoVO bwrInfoVO) throws Exception;
-	
-	/**
-	 * TB_ACCT_INFO insert
-	 *
-	 * @param AcctInfoVO
-	 * @throws Exception
-	 * @return
-	 */
-	public void insertAccInfo(AcctInfoVO acctInfoVO) throws Exception;
-	
-	/**
-	 * TB_DE_DTLS insert
-	 *
-	 * @param DeDtlsVO
-	 * @throws Exception
-	 * @return
-	 */
-	public void insertDeDtls(DeDtlsVO deDtlsVO) throws Exception;
+	public void insertCsvtoH2() throws Exception;
+
 }

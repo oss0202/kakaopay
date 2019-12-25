@@ -17,7 +17,9 @@ package com.oss.kakaopay.barofn.vo;
 public class BrInfoVO {
 	
 	private String brCode;	//관리점코드
-	private String brName;	//관리점명
+	private String brNm;	//관리점명
+	private String year;	//년도
+	private String sumAmt;	//금액합산
 	
 	public String getBrCode() {
 		return brCode;
@@ -25,15 +27,28 @@ public class BrInfoVO {
 	public void setBrCode(String brCode) {
 		this.brCode = brCode;
 	}
-	public String getBrName() {
-		return brName;
+	public String getBrNm() {
+		return brNm;
 	}
-	public void setBrName(String brName) {
-		this.brName = brName;
+	public void setBrNm(String brNm) {
+		this.brNm = brNm;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getSumAmt() {
+		return sumAmt;
+	}
+	public void setSumAmt(String sumAmt) {
+		this.sumAmt = sumAmt;
 	}
 	@Override
 	public String toString() {
-		return "BrInfoVO [brCode=" + brCode + ", brName=" + brName + "]";
+		return "BrInfoVO [brCode=" + brCode + ", brNm=" + brNm + ", year=" + year + ", sumAmt=" + sumAmt + "]";
 	}
+
 	
 }

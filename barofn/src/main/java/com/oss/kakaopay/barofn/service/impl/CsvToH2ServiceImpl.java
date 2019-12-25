@@ -28,41 +28,15 @@ public class CsvToH2ServiceImpl implements CsvToH2Service{
 	CsvToH2DAO csvToH2DAO;
 	
 	/**
-	 * TB_BR_INFO insert
+	 * 폴더에 있는 CSV파일 H2에 Insert
 	 *
-	 * @param BrInfoVO
+	 * @param 
 	 * @throws Exception
 	 * @return
 	 */
 	@Override
-	public void insertBrInfo(BrInfoVO brInfoVO) throws Exception {
+	public void insertCsvtoH2() throws Exception {
 		System.out.println("service insertBrInfo호출");
-		csvToH2DAO.insertBrInfo(brInfoVO);
-	}
-	
-	/**
-	 * TB_ACCT_INFO insert
-	 *
-	 * @param AcctInfoVO
-	 * @throws Exception
-	 * @return
-	 */
-	@Override
-	public void insertAccInfo(AcctInfoVO acctInfoVO) throws Exception {
-		System.out.println("service insertAccInfo호출");
-		csvToH2DAO.insertAccInfo(acctInfoVO);
-	}
-	
-	/**
-	 * TB_DE_DTLS insert
-	 *
-	 * @param DeDtlsVO
-	 * @throws Exception
-	 * @return
-	 */
-	@Override
-	public void insertDeDtls(DeDtlsVO deDtlsVO) throws Exception {
-		System.out.println("service insertDeDtls호출");
-		csvToH2DAO.insertDeDtls(deDtlsVO);
+		csvToH2DAO.insertCsvtoH2();
 	}
 }

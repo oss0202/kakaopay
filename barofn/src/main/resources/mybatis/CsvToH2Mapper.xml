@@ -1,28 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CsvToH2">
 	<resultMap type="BrInfoVO" id="BrInfoMap">
 		<result property="brCode" column="BR_CODE" />
-		<result property="brName" column="BR_NAME" />
+		<result property="brNm" column="BR_NM" />
 	</resultMap>
-	<update id="createSample"></update>
 	
-	<insert id="insertSample" parameterType="BrInfoVO" >
+	<resultMap type="AcctInfoVO" id="AcctInfoMap">
+		<result property="acctNo" column="ACCT_NO" />
+		<result property="acctNm" column="ACCT_NM" />
+		<result property="brCode" column="BR_CODE" />
+	</resultMap>
+	
+	<resultMap type="DeDtlsVO" id="DeDtlsMap">
+		<result property="deDm" column="DE_DM" />
+		<result property="acctNo" column="ACCT_NO" />
+		<result property="deNo" column="DE_NO" />
+		<result property="amt" column="AMT" />
+		<result property="fee" column="FEE" />
+		<result property="canAt" column="CAN_AT" />
+	</resultMap>
+	
+	<update id="createSample"></update>
+ 	
+ 	<!-- TB_BRINFO Insert -->
+	<insert id="insertTbBrinfo" parameterType="BrInfoVO" >
  		insert into TB_BRINFO 
- 		values (#{brCode}, #{brName})
+ 		values (#{brCode}, #{brNm})
  	</insert>
  	
- 	<select id="selectSampleAll" resultMap="BrInfoMap">
+ 	<!-- TB_ACCTINFO Insert -->
+	<insert id="insertTbAcctinfo" parameterType="AcctInfoVO" >
+ 		insert into TB_ACCTINFO 
+ 		values (#{acctNo}, #{acctNm}, #{brCode})
+ 	</insert>
+ 	
+ 	<!-- TB_DEDTLS Insert -->
+	<insert id="insertTbDedtls" parameterType="DeDtlsVO" >
+ 		insert into TB_DEDTLS 
+ 		values (#{deDm}, #{acctNo}, #{deNo}, #{amt}, #{fee}, #{canAt})
+ 	</insert>
+ 	 	
+ 	<!-- TB_BRINFO select -->
+ 	<select id="selectTbBrinfo" resultMap="BrInfoMap">
  		SELECT * FROM TB_BRINFO
  	</select>
  	
- 	<select id="selectSample" parameterType="BrInfoVO" resultMap="BrInfoMap">
- 		SELECT * FROM TB_BRINFO WHERE BR_CODE = #{brCode}
+ 	<!-- TB_ACCTINFO select -->
+ 	<select id="selectTbAcctinfo" resultMap="AcctInfoMap">
+ 		SELECT * FROM TB_ACCTINFO
  	</select>
  	
- 	<select id="groupSample" resultType="Map">
- 		SELECT BR_CODE,  BR_NAME, 11 FROM TB_BRINFO
+ 	<!-- TB_DEDTLS select -->
+ 	<select id="selectTbDedtls" resultMap="DeDtlsMap">
+ 		SELECT * FROM TB_DEDTLS
  	</select>
+ 	
 </mapper>
