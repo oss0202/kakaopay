@@ -31,7 +31,7 @@ public class BarofnDAO {
 	/**
 	 * 폴더에 있는 CSV파일 H2에 Insert
 	 *
-	 * @param 
+	 * @param 없음
 	 * @throws Exception
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class BarofnDAO {
 	 * @throws Exception
 	 * @return
 	 */
-	public List<AcctInfoVO> selectYearBhfDelngTotamt(){
+	public List<AcctInfoVO> selectYearBrSumAmt(){
 		return sqlSession.selectList("Barofn.selectYearBhfDelngTotamt");
 	}
 	
@@ -79,7 +79,7 @@ public class BarofnDAO {
 	 * @throws Exception
 	 * @return
 	 */
-	public AcctInfoVO selectBrDeTotAmt(String brName){
-		return sqlSession.selectOne("Barofn.selectBrDeTotAmt", brName);
+	public AcctInfoVO selectBrDeSumAmt(String brName){
+		return sqlSession.selectOne("Barofn.selectBrDeSumAmt", brName);
 	}
 }

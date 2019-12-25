@@ -40,11 +40,9 @@ public class BarofnServiceImpl implements BarofnService{
 		 */
 	@Override
 	public List<Map>  selectTotAmtMaxCtr() {
-		System.out.println("service selectTotAmtMaxCtr");
 		List<Map> LstMap = new ArrayList<Map>();
 		Map<String, String> map;
 		List<AcctInfoVO> acctInfoLst = barofnDAO.selectTotAmtMaxCtr();
-		System.out.println(acctInfoLst);
 		for (AcctInfoVO acctInfoVO : acctInfoLst) {
 			map = new HashMap<>();
 			map.put("year", acctInfoVO.getYear());
@@ -64,8 +62,7 @@ public class BarofnServiceImpl implements BarofnService{
 	 * @return
 	 */
 	@Override
-	public List<Map>  selectDeStr() {
-		System.out.println("service selectDeStr");
+	public List<Map>  selectYearNotDeUser() {
 		List<AcctInfoVO> acctInfoLst = barofnDAO.selectYearDeUser();//년도, 계정 조회
 		System.out.println(acctInfoLst);
 		
@@ -113,10 +110,9 @@ public class BarofnServiceImpl implements BarofnService{
 		 * @return
 		 */
 	@Override
-	public List<Map> selectYearBhfDelngTotamt() {
-		System.out.println("service selectYearBhfDelngTotamt");
+	public List<Map> selectYearBrSumAmt() {
 		List<Map> lstMap = new ArrayList<>();
-		List<AcctInfoVO> acctInfoLst = barofnDAO.selectYearBhfDelngTotamt();//년도별 지점별 매출액
+		List<AcctInfoVO> acctInfoLst = barofnDAO.selectYearBrSumAmt();//년도별 지점별 매출액
 		Map<String, Object> yearBrMap = new HashMap<>();//key : year, dataList
 		List<Map> dataList = new ArrayList<>();//dataList
 		Map<String, String> dataListMap = new HashMap<>();//dataList element
@@ -151,51 +147,12 @@ public class BarofnServiceImpl implements BarofnService{
 		 * @return
 		 */
 	@Override
-	public Map selectBrDeTotAmt(String brName) {
-		System.out.println("파라미터 : " + brName);
-		System.out.println("service selectBrDeTotAmt");
-		AcctInfoVO acctInfoVO = barofnDAO.selectBrDeTotAmt(brName);//년도별 지점별 매출액
+	public Map selectBrDeSumAmt(String brName) {
+		AcctInfoVO acctInfoVO = barofnDAO.selectBrDeSumAmt(brName);//년도별 지점별 매출액
 		Map<String, String> result = new HashMap<>();//dataList element
 		result.put("brName", acctInfoVO.getBrNm());
 		result.put("brCode", acctInfoVO.getBrCode());
 		result.put("sumAmt", acctInfoVO.getSumAmt());
 		return result;
-	}
-	
-	
-	public static void main(String[] args) {
-		/*List<Map> lstMap = new ArrayList<Map>();
-		Map<String, Object> map = new HashMap<>();
-		map.put("year", "2018");
-		List<Map> lstMap2 = new ArrayList<Map>();
-		Map<String, String> map2 = new HashMap<>();
-		map2.put("brName", "관리점명");
-		map2.put("brCode", "관리점코드");
-		map2.put("sumAmt", "0000");
-		lstMap2.add(map2);
-		Map<String, String> map3 = new HashMap<>();
-		map2.put("brName", "관리점명2");
-		map2.put("brCode", "관리점코드2");
-		map2.put("sumAmt", "00002");
-		lstMap2.add(map3);
-		map.put("dataList", lstMap2);
-		lstMap.add(map);*/
-		
-		/*List<Map> lstMap = new ArrayList<Map>();
-		Map<String, Object> map = new HashMap<>();
-			map.put("year", "2018");
-			List<Map> lstMap2 = new ArrayList<Map>();
-			Map<String, String> map2 = new HashMap<>();
-			map2.put("brName", "관리점명");
-			map2.put("brCode", "관리점코드");
-			map2.put("sumAmt", "0000");
-			lstMap2.add(map2);
-		Map<String, String> map3 = new HashMap<>();
-			map3.put("brName", "관리점명2");
-			map3.put("brCode", "관리점코드2");
-			map3.put("sumAmt", "00002");
-			lstMap2.add(map3);
-			map.put("dataList", lstMap2);
-		lstMap.add(map);*/
 	}
 }

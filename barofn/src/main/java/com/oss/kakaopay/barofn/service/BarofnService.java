@@ -38,7 +38,7 @@ public interface BarofnService{
 	 * @throws Exception
 	 * @return
 	 */
-	public List<Map> selectDeStr();
+	public List<Map> selectYearNotDeUser();
 	
 	 /**
 	 * 연도별 관리점별 거래금액 합계를 구하고 합계금액별로 내립차순 조회
@@ -48,7 +48,7 @@ public interface BarofnService{
 	 * @throws Exception
 	 * @return
 	 */
-	public List<Map> selectYearBhfDelngTotamt();
+	public List<Map> selectYearBrSumAmt();
 							
 	 /**
 	 * 해당지점 거래금액 합계 조회
@@ -58,5 +58,5 @@ public interface BarofnService{
 	 * @throws Exception
 	 * @return
 	 */
-	public Map selectBrDeTotAmt(String brName);
+	public Map selectBrDeSumAmt(String brName);
 }

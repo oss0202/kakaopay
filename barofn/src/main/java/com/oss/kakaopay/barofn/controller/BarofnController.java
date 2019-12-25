@@ -76,21 +76,8 @@ public class BarofnController {
 	 * @throws Exception
 	 * @return
 	 */
-	@RequestMapping(value = "1", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "maxSumUser", produces = "application/json", method = RequestMethod.GET)
 	public List<Map> selectTotAmtMaxCtr() {
-		// TODO Auto-generated method stub
-		System.out.println("selectTotAmtMaxCtr()호출");
-		/*List<Map> LstMap = new ArrayList<Map>();
-		Map<String, String> map;
-		List<AcctInfoVO> acctInfoLst = 
-		System.out.println(acctInfoLst);
-		for (AcctInfoVO acctInfoVO : acctInfoLst) {
-			map = new HashMap<>();
-			map.put("year", acctInfoVO.getYear());
-			map.put("name", acctInfoVO.getAcctNm());
-			map.put("sumAmt", acctInfoVO.getSumAmt());
-			LstMap.add(map);
-		}*/
 		return barofnServiceImpl.selectTotAmtMaxCtr();
 	}
 	
@@ -102,11 +89,9 @@ public class BarofnController {
 	 * @throws Exception
 	 * @return
 	 */
-	@RequestMapping(value = "2", produces = "application/json")
-	public List<Map> selectDeStr() {
-		// TODO Auto-generated method stub
-		System.out.println("selectDeStr()호출");
-		return barofnServiceImpl.selectDeStr();
+	@RequestMapping(value = "yearNotDeUser", produces = "application/json", method = RequestMethod.GET)
+	public List<Map> selectYearNotDeUser() {
+		return barofnServiceImpl.selectYearNotDeUser();
 	}
 	
 	 /**
@@ -117,11 +102,9 @@ public class BarofnController {
 	 * @throws Exception
 	 * @return
 	 */
-	@RequestMapping(value = "3", produces = "application/json")
-	public List<Map> selectYearBhfDelngTotamt() {
-		// TODO Auto-generated method stub
-		System.out.println("selectYearBhfDelngTotamt()호출");
-		return barofnServiceImpl.selectYearBhfDelngTotamt();
+	@RequestMapping(value = "yearBrSumAmt", produces = "application/json", method = RequestMethod.GET)
+	public List<Map> selectYearBrSumAmt() {
+		return barofnServiceImpl.selectYearBrSumAmt();
 	}
 	
 	 /**
@@ -132,13 +115,12 @@ public class BarofnController {
 	 * @throws Exception
 	 * @return
 	 */
-	@RequestMapping(value = "4", produces = "application/json")
-	public Map selectBrDeTotAmt(@RequestParam(value = "brName") String  brName) {
-		System.out.println("selectBrDeTotAmt()호출");
+	@RequestMapping(value = "brDeSumAmt", produces = "application/json", method = RequestMethod.GET)
+	public Map selectBrDeSumAmt(@RequestParam(value = "brName") String  brName) {
 		if(brName.equals("분당점")||brName=="분당점") {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "br code not found error");
 		}
-		return barofnServiceImpl.selectBrDeTotAmt(brName);
+		return barofnServiceImpl.selectBrDeSumAmt(brName);
 	}
 
 }

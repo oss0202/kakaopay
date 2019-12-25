@@ -28,6 +28,7 @@
 		<result property="canAt" column="CAN_AT" />
 	</resultMap>
 
+	<!-- 각 연도별 합계 금액이 가장 많은 고객 조회 -->
  	<select id="selectTotAmtMaxCtr" resultMap="AcctInfoMap">
  		SELECT
 			YEAR,
@@ -132,7 +133,7 @@
                 ORDER BY YEAR DESC, SUM_AMT DESC
  	</select>
  	
- 	<select id="selectBrDeTotAmt" parameterType="AcctInfoVO" resultMap="AcctInfoMap">
+ 	<select id="selectBrDeSumAmt" parameterType="AcctInfoVO" resultMap="AcctInfoMap">
 		
 		SELECT
 			TB.BR_NM, 
@@ -161,18 +162,5 @@
 		TB.BR_NM , TB.BR_CODE 
 
  	</select>
- 	
- 	
- 	
- 	
- 	<!-- TB_ACCTINFO select -->
- 	<select id="selectTbAcctinfo" resultMap="AcctInfoMap">
- 		SELECT * FROM TB_ACCTINFO
- 	</select>
- 	
- 	<!-- TB_DEDTLS select -->
- 	<select id="selectTbDedtls" resultMap="DeDtlsMap">
- 		SELECT * FROM TB_DEDTLS
- 	</select>
- 	
+
 </mapper>
