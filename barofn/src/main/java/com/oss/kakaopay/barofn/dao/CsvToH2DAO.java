@@ -63,7 +63,6 @@ public class CsvToH2DAO {
 	 * @return
 	 */
 	public void insertCsvtoH2() throws Exception{
-		System.out.println("dao insertBrInfo호출");
 		readAllExample();
 	}
 	
@@ -132,7 +131,6 @@ public class CsvToH2DAO {
 		String fileName = null;
 		Reader reader;
 		for (File string : new File(ClassLoader.getSystemResource("static/csv/").toURI()).listFiles()) {
-			System.out.println(string.getName());
 			fileName = string.getName();
 			reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("static/csv/" + fileName).toURI()));
 			readAll(reader, fileName);

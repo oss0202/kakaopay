@@ -14,14 +14,11 @@ public class BarofnApplication implements CommandLineRunner{
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BarofnApplication.class, args);
-		System.out.println("===========SERVER STSRT===========");
-		
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("------------------CSV to H2------------------");
 		csvToH2ServiceImpl.insertCsvtoH2();
 	}
 

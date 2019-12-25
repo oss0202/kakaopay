@@ -36,7 +36,6 @@ public class CsvToH2ServiceImpl implements CsvToH2Service{
 	 */
 	@Override
 	public void insertCsvtoH2() throws Exception {
-		System.out.println("service insertBrInfo호출");
 		csvToH2DAO.insertCsvtoH2();
 	}
 }
